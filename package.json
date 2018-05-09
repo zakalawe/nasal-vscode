@@ -6,6 +6,10 @@
     "author": {
         "name": "James Turner"
     },
+    "repository": {
+        "type": "git",
+        "url" : "https://github.com/zakalawe/nasal-vscode"
+    },
     "keywords": [
         "nasal",
         "flightgear"
@@ -32,7 +36,13 @@
             "language": "nasal",
             "scopeName": "source.nasal",
             "path": "./Nasal-language.json"
-        }]
+        }],
 
+        "snippets": [
+            {
+                    "language": "nasal",
+                    "path": "./snippets/nasal.json"
+            }
+        ]
     }
 }

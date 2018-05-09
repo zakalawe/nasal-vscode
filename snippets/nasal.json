@@ -1,0 +1,19 @@
+{
+  "setprop" : {
+    "prefix":"setprop",
+    "body":"setprop(${1:prop}, ${2:value})",
+    "description":"Set a property"
+  },
+
+  "foreach" : {
+    "prefix":"foreach",
+    "body":["foreach (var ${2:item}; ${1:array}) {",
+      "\t$0",
+      "}"
+    ]
+
+  }
+
+  
+
+}
