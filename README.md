@@ -1,2 +1,2 @@
-# nasal-vscode
-Nasal package for Visual Studio Code
+Nasal is the scripting langauge inside FlightGear.
+

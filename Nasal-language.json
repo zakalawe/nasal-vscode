@@ -1,0 +1,285 @@
+{
+  "comment": "Nasal syntax: version 0.2 - thanks Philosopher",
+  "fileTypes": ["nas"],
+  "name": "Nasal",
+  "scopeName": "source.nasal",
+  "patterns": [
+    {
+      "name"  : "variable.complex.nasal",
+      "begin" : "(?<=func)\\s*\\(",
+      "patterns": [
+        { "include": "$self" },
+        {
+          "name"   : "variable.parameter.nas",
+          "match"  : "\\w"
+        }
+      ],
+      "end"   : "\\)"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "support.class.nas"
+        },
+        "2": {
+          "name": "entity.name.function.nas"
+        },
+        "3": {
+          "name": "keyword.operator.nas"
+        },
+        "4": {
+          "name": "storage.type.function.nas"
+        }
+      },
+      "comment": "match stuff like: Sound.play = func() { \u2026 }",
+      "match": "([a-zA-Z_?.$][\\w?.$]*)\\.([a-zA-Z_?.$][\\w?.$]*)\\s*(=)\\s*(func)",
+      "name": "meta.function.nas"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "entity.name.function.nas"
+        },
+        "2": {
+          "name": "keyword.operator.nas"
+        },
+        "3": {
+          "name": "storage.type.function.nas"
+        }
+      },
+      "comment": "match stuff like: play = func() { \u2026 }",
+      "match": "([a-zA-Z_?$][\\w?$]*)\\s*(=)\\s*(func)",
+      "name": "meta.function.nas"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "entity.name.function.nas"
+        },
+        "2": {
+          "name": "keyword.operator.nas"
+        },
+        "3": {
+          "name": "storage.type.function.nas"
+        }
+      },
+      "comment": "match stuff like: play = (func() { \u2026 }",
+      "match": "([a-zA-Z_?$][\\w?$]*)\\s*(=)\\s*\\(\\s*(func)",
+      "name": "meta.function.nas"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "entity.name.function.nas"
+        },
+        "2": {
+          "name": "storage.type.function.nas"
+        }
+      },
+      "comment": "match stuff like: foobar: func() { \u2026 }",
+      "match": "\\b([a-zA-Z_?.$][\\w?.$]*)\\s*:\\s*\\b(func)",
+      "name": "meta.function.hash.nas"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "keyword.operator.new.nas"
+        },
+        "2": {
+          "name": "entity.name.type.instance.nas"
+        }
+      },
+      "match": "(new)\\s+(\\w+(?:\\.\\w*)?)",
+      "name": "meta.class.instance.constructor"
+    },
+    {
+      "name"  : "constant.numeric.nas",
+      "match" : "((\\b[0-9]+)?\\.)?\\b[0-9]+([eE][-+]?[0-9]+)?\\b"
+    },
+    {
+      "name"  : "constant.numeric.nas",
+      "match" : "0[x|X][0-9a-fA-F]+"
+    },
+    {
+      "begin": "'",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.begin.nas"
+        }
+      },
+      "end": "'",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.end.nas"
+        }
+      },
+      "name": "string.quoted.single.nas",
+      "patterns": [
+        {
+          "match": "\\\\(x\\h{2}|[0-2][0-7]{,2}|3[0-6][0-7]?|37[0-7]?|[4-7][0-7]?|.)",
+          "name": "constant.character.escape.nas"
+        }
+      ]
+    },
+    {
+      "begin": "\"",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.begin.nas"
+        }
+      },
+      "end": "\"",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.end.nas"
+        }
+      },
+      "name": "string.quoted.double.nas",
+      "patterns": [
+        {
+          "match": "\\\\(x\\h{2}|[0-2][0-7]{,2}|3[0-6][0-7]|37[0-7]?|[4-7][0-7]?|.)",
+          "name": "constant.character.escape.nas"
+        }
+      ]
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "punctuation.definition.comment.nas"
+        }
+      },
+      "match": "(#).*$\\n?",
+      "name": "comment.line.hash.nas"
+    },
+    {
+      "match": "\\b(func|var)\\b",
+      "name": "storage.type.nas"
+    },
+    {
+      "name"  : "keyword.control.nas",
+      "match" : "\\b(if|elsif|else)\\b"
+    },
+    {
+      "name"  : "keyword.control.nas",
+      "match" : "\\b(while|for|foreach|forindex)\\b"
+    },
+    {
+      "name"  : "keyword.control.nas",
+      "match" : "\\b(break(\\s+[A-Z]{2,16})?(?=\\s*(;|\\}))|continue(\\s+[A-Z]{2,16})?(?=\\s*(;|\\}))|([A-Z]{2,16})(?=\\s*;([^\\)#;]*?;){0,2}[^\\)#;]*?\\)))\\b"
+    },
+    {
+      "name"  : "storage.type.nas",
+      "match" : "\\b(func|return|var)\\b"
+    },
+    {
+      "name"  : "keyword.other.nas",
+      "match" : "\\b(me|arg|parents)\\b"
+    },
+    {
+      "name"  : "keyword.other.nas",
+      "match" : "\\b(size|keys|append|pop|setsize|subvec|delete|int|num|streq|substr)\\b"
+    },
+    {
+      "name"  : "keyword.other.nas",
+      "match" : "\\b(chr|typeof|compile|call|die|sprintf|caller|closure|find|cmp)\\b"
+    },
+    {
+      "name"  : "keyword.other.nas",
+      "match" : "\\b(split|rand|bind|sort|ghosttype|id|readline)\\b"
+    },
+    {
+      "name"  : "keyword.other.nas",
+      "match" : "\\b(rand|print|fgcommand|setprop|getprop|settimer|interpolate)\\b"
+    },
+    {
+      "name"  : "keyword.other.nas",
+      "match" : "\\bmath.(sin|cos|exp|ln|sqrt|atan2|e|pi)\\b"
+    },
+    {
+      "name"  : "keyword.other.nas",
+      "match" : "\\bbits.(sfld|fld|setfld|buf)\\b"
+    },
+    {
+      "name"  : "keyword.other.nas",
+      "match" : "\\butf8.(chstr|strc|substr|size|validate)\\b"
+    },
+    {
+      "name"  : "keyword.other.nas",
+      "match" : "\\bio.(open|close|read|write|seek|tell|readln|stat)\\b"
+    },
+    {
+      "name"  : "keyword.other.nas",
+      "match" : "\\bthread.(newthread|newlock|lock|unlock|newsem|semdown|semup)\\b"
+    },
+    {
+      "name"  : "keyword.other.nas",
+      "match" : "\\bunix.(pipe|fork|dup2|exec|waitpid|opendir|readdir|closedir|time|chdir|environ)\\b"
+    },
+    {
+      "name"  : "keyword.other.nas",
+      "match" : "\\bregex.(comp|exec)\\b"
+    },
+    {
+      "name"  : "keyword.other.nas",
+      "match" : "\\bsqlite.(open|close|prepare|exec|finalize)\\b"
+    },
+    {
+      "match": "\\bnil\\b",
+      "name": "constant.language.nil.nas"
+    },
+    {
+      "match": "\\b(obj|me)\\b",
+      "name": "variable.language.nas"
+    },
+    {
+      "name": "keyword.operator.nas",
+      "match": "!|\\*|\\-|\\+|~|/|==|=|!=|<=|>=|<|>|!|\\?|\\:|\\*=|/=|\\+=|\\-=|~=|\\.\\.\\.|\\b(and|or)\\b"
+    },
+    {
+      "begin": "(?<=[=(:]|^|return|&&|\\|\\||!)\\s*(/)(?![/*+{}?])",
+      "beginCaptures": {
+        "1": {
+          "name": "punctuation.definition.string.begin.nas"
+        }
+      },
+      "end": "(/)[igm]*",
+      "endCaptures": {
+        "1": {
+          "name": "punctuation.definition.string.end.nas"
+        }
+      },
+      "name": "string.regexp.nas",
+      "patterns": [
+        {
+          "match": "\\\\.",
+          "name": "constant.character.escape.nas"
+        }
+      ]
+    },
+    {
+      "match": "\\;",
+      "name": "punctuation.terminator.statement.nas"
+    },
+    {
+      "match": ",[ |\\t]*",
+      "name": "meta.delimiter.object.comma.nas"
+    },
+    {
+      "match": "\\.",
+      "name": "meta.delimiter.method.period.nas"
+    },
+    {
+      "match": "\\{|\\}",
+      "name": "meta.brace.curly.nas"
+    },
+    {
+      "match": "\\(|\\)",
+      "name": "meta.brace.round.nas"
+    },
+    {
+      "match": "\\[|\\]",
+      "name": "meta.brace.square.nas"
+    }
+  ],
+  "uuid": "f33e3fd8-0d8b-4e8b-b19e-54f0f4739d5a"
+}

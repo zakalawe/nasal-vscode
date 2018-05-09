@@ -1,0 +1,38 @@
+{
+    "name" : "nasal",
+    "displayName": "Nasal (Not Another Scripting Langauge)",
+    "version" : "0.1.1",
+    "publisher": "flightgear",
+    "author": {
+        "name": "James Turner"
+    },
+    "keywords": [
+        "nasal",
+        "flightgear"
+    ],
+    "engines": {
+        "vscode": "^1.0.0"
+    },
+    "license": "GPL",
+    "contributors": [
+        {
+             "name": "James Turner"
+        }
+    ],
+
+    "contributes": {
+        "languages": [{
+            "id": "nasal",
+            "extensions": [ ".nas" ],
+            "aliases": [ "Nasal", "nas" ],
+            "configuration": "./language-configuration.json"
+        }],
+
+        "grammars": [{
+            "language": "nasal",
+            "scopeName": "source.nasal",
+            "path": "./Nasal-language.json"
+        }]
+
+    }
+}
